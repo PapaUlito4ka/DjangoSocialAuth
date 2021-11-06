@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock %}
+{% block content %}
+
+<div class="row">
+
+    {% if user_id %}
+        <div class="col-sm-12 mb-3">
+            <h4 class="text-center"> Welcome {{ user.first_name }}</h4>
+        </div>
+        <div class="col-sm-12 mb-3">
+            {% if last_message == 'No messages' %}
+                <h4 class="text-center">{{ last_message }}</h4>
+            {% else %}
+                <h4 class="text-center"> Last message: </h4>
+                <h2 class="text-center"><a href="" onclick="window.location.reload()">{{ last_message.text }}</a></h2>
+                <blockquote class="text-center">
+                    <span>Send by {{ last_message.user }} at {{ last_message.send_at }}</span>
+                </blockquote>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <div class="col-sm-12 mb-3 d-flex justify-content-around">
+        {% if user_id %}
+            <button class="btn btn-primary flex-fill mx-1" onclick="sendBroMessage({{ user_id }})">Bro!</button>
+            <button class="btn btn-danger flex-fill mx-1" onclick="sendSisMessage({{ user_id }})">Sis!</button>
+        {% else %}
+            <div class="flex-fill d-flex flex-column">
+                <button class="btn btn-primary flex-fill mx-1">Bro!</button>
+                <span class="text-center">{{ last_message.bro_message_cnt }}</span>
+            </div>
+            <div class="flex-fill d-flex flex-column">
+                <button class="btn btn-danger flex-fill mx-1">Sis!</button>
+                <span class="text-center">{{ last_message.sis_message_cnt }}</span>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="col-sm-12 mt-2 text-center">
+        <button class="btn btn-danger">
+            {% if user_id %}
+                <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}">Login</a>
+            {% endif %}
+        </button>
+    </div>
+</div>
+
+{% endblock %}
