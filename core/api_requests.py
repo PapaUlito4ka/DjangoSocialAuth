@@ -2,7 +2,7 @@ import requests
 from social_app.settings import SECRET_KEY
 
 # BASE = f'http://{DOMAIN}/api/messages/'
-BASE = 'https://agile-sands-61045.herokuapp.com/api/messages'
+BASE = 'https://agile-sands-61045.herokuapp.com/api/messages/'
 HEADERS = {
     'token': SECRET_KEY
 }
