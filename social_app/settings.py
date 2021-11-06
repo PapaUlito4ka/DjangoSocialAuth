@@ -104,7 +104,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTHENTICATION_BACKENDS = [
     'social_core.backends.google.GoogleOAuth2',
-    'social_core.backends.instagram.InstagramOAuth2',
     'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 ]
@@ -119,6 +118,8 @@ SOCIAL_AUTH_FACEBOOK_SECRET = 'b3683c166c9a1f322ca91529e978cb01'
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '364845800257-4h6caupusjo69lmu8j5vc65872f8nfdj.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+
+SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
