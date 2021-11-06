@@ -1,7 +1,11 @@
+from django.contrib.sites.models import Site
+
 import requests
 from social_app.settings import SECRET_KEY
 
-BASE = 'http://localhost:8000/api/messages/'
+DOMAIN = Site.objects.get_current().domain
+
+BASE = f'http://{DOMAIN}/api/messages/'
 HEADERS = {
     'token': SECRET_KEY
 }
